@@ -2,7 +2,7 @@
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat&logo=.net)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![NuGet](https://img.shields.io/nuget/v/DMNSN.Core?style=flat&logo=nuget)](https://www.nuget.org/packages/DMNSN.Core)
-[![License](https://img.shields.io/badge/License-OneWeb%20Co.%2C%20Ltd.-blue?style=flat)](#license)
+[![License](https://img.shields.io/badge/License-DevDogs-blue?style=flat)](#license)
 
 A comprehensive .NET 8 shared library providing essential utilities, extension methods, and configuration helpers for modern .NET applications.
 
