@@ -37,11 +37,12 @@ if (Test-Path "${rootPath}\tests\${projectName}.Tests\${projectName}.Tests.cspro
 Write-Host ".. Building the project..."
 dotnet build $projectPath --configuration Release
 
-# Steo 3: Automatically running package version follow build type, if development running X.X.Y or production running X.Y.0
+# Step 3: Automatically running package version follow build type, if development running X.X.Y or production running X.Y.0
 Write-Host "Step 3: Automatically updating package version...${buildType}"
 # Create the package version based on the project file version, if project file version is not set, default to 8.0.0
 $projectFile = [xml](Get-Content $projectPath)
-$currentVersion = $projectFile.Project.PropertyGroup.Version.InnerText
+$versionElement = $projectFile.Project.PropertyGroup.Version
+$currentVersion = if ($versionElement) { $versionElement.InnerText } else { $null }
 if (-not $currentVersion) {
 	Write-Host ".. No version found in project file, setting default version to 8.0.0"
 	$currentVersion = "8.0.0"
@@ -69,7 +70,15 @@ if ($buildType -eq "production") {
 $newVersion = "$majorVersion.$minorVersion.$versionSuffix"
 Write-Host ".. Setting package version to $newVersion"
 # Update the project file with the new version
-$projectFile.Project.PropertyGroup.Version.InnerText = $newVersion
+$versionElement = $projectFile.Project.PropertyGroup.Version
+if ($versionElement) {
+	$versionElement.InnerText = $newVersion
+} else {
+	# Create the Version element if it doesn't exist
+	$versionNode = $projectFile.CreateElement("Version")
+	$versionNode.InnerText = $newVersion
+	$projectFile.Project.PropertyGroup.AppendChild($versionNode)
+}
 # Save the updated project file
 $projectFile.Save($projectPath)
 
