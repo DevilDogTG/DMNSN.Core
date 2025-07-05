@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Version>8.0.0</Version>
+		<Authors>DevilDogTG</Authors>
+		<Company>OneWeb Co., Ltd.</Company>
+		<Description>Shared libraries</Description>
+		<Copyright>Copyright 2025 @ OneWeb Co., Ltd.</Copyright>
+		<PackageProjectUrl>https://www.oneweb.co.th</PackageProjectUrl>
+		<PackageIcon>logo.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://gitlab.com/dmnsn/libraries/core</RepositoryUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Compile Update="Extensions\ConvertExtension.*.cs">
+			<DependentUpon>ConvertExtension.cs</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+</Project>
