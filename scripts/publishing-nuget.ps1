@@ -7,7 +7,7 @@ param (
 # Configure
 $rootPath = "${PSScriptRoot}\..\"
 $projectName = "DMNSN.Core"
-$projectPath = "${rootPath}\src\${projectName}.csproj"
+$projectPath = "${rootPath}\src\${projectName}\${projectName}.csproj"
 ##############################################################
 # Under this line will be replace automatically when updated #
 ##############################################################
