@@ -1,0 +1,44 @@
+{
+  "help": "https://go.microsoft.com/fwlink/?linkid=866610",
+  "fileNesting": {
+    "rules": {
+      ".filenesting.json": {
+        "groupWith": "*.csproj"
+      },
+      "ConvertExtension.Boolean.cs": {
+        "groupWith": "ConvertExtension.cs"
+      },
+      "ConvertExtension.String.cs": {
+        "groupWith": "ConvertExtension.cs"
+      },
+      "ExceptionExtension.*.cs": {
+        "groupWith": "ExceptionExtension.cs"
+      },
+      "EnumExtension.*.cs": {
+        "groupWith": "EnumExtension.cs"
+      },
+      "LoggingSettings.*.cs": {
+        "groupWith": "LoggingSettings.cs"
+      },
+      "Configure.*.cs": {
+        "groupWith": "Configure.cs"
+      },
+      "Format.*.cs": {
+        "groupWith": "Format.cs"
+      },
+      "appsettings.*.json": {
+        "groupWith": "appsettings.json"
+      },
+      "*.Designer.cs": {
+        "groupWith": "*.cs"
+      },
+      "*.generated.cs": {
+        "groupWith": "*.cs"
+      }
+    },
+    "options": {
+      "showAllFiles": true,
+      "applyTo": "all"
+    }
+  }
+}
