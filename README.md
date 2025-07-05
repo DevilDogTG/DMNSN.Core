@@ -1,11 +1,6 @@
 # DMNSN.Core
 
-[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat&logo=.net# Enum descriptions
-MyEnum value = MyEnum.SomeValue;
-string description = value.Description();
-```
-
-## :books: API Referencettps://dotnet.microsoft.com/download/dotnet/8.0)
+[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat&logo=.net)](https://dotnet.microsoft.com/download/dotnet/8.0)
 [![NuGet](https://img.shields.io/nuget/v/DMNSN.Core?style=flat&logo=nuget)](https://www.nuget.org/packages/DMNSN.Core)
 [![License](https://img.shields.io/badge/License-OneWeb%20Co.%2C%20Ltd.-blue?style=flat)](#license)
 
@@ -31,6 +26,7 @@ A comprehensive .NET 8 shared library providing essential utilities, extension m
 ## :sparkles: Features
 
 ### :hammer_and_wrench: Extension Methods
+
 - **String Conversion**: Parse objects to strings with fallback defaults
 - **String Manipulation**: Trim strings to specific lengths and extract substrings from the end
 - **Boolean Parsing**: Parse various string representations as boolean values (case-insensitive)
@@ -38,16 +34,19 @@ A comprehensive .NET 8 shared library providing essential utilities, extension m
 - **Exception Handling**: Enhanced exception message and stack trace extraction with inner exception support
 
 ### :gear: Configuration Utilities
+
 - **Configuration Keys**: Predefined constants for common configuration sections
 - **Configuration Files**: Standardized file name constants
 - **Logging Settings**: Comprehensive logging configuration with console and file output options
 
 ### :calendar: Format Definitions
+
 - **Date Formats**: Predefined date format patterns
 - **Time Formats**: Various time representation formats
 - **DateTime Formats**: Combined date and time format patterns
 
 ### :white_check_mark: Test Coverage
+
 - **Comprehensive Unit Tests**: 82+ tests covering all functionality
 - **Edge Case Testing**: Thorough testing of null values, empty strings, and boundary conditions
 - **Integration Testing**: Tests for method chaining and combined operations
@@ -55,16 +54,19 @@ A comprehensive .NET 8 shared library providing essential utilities, extension m
 ## :package: Installation
 
 ### Package Manager
+
 ```powershell
 Install-Package DMNSN.Core
 ```
 
 ### .NET CLI
+
 ```bash
 dotnet add package DMNSN.Core
 ```
 
 ### PackageReference
+
 ```xml
 <PackageReference Include="DMNSN.Core" Version="8.0.0" />
 ```
@@ -98,14 +100,18 @@ string lastPart = text.ReverseSubstring(5); // Returns "World"
 // Enum descriptions
 MyEnum value = MyEnum.SomeValue;
 string description = value.Description();
-## ?? API Reference
+```
+
+## :books: API Reference
 
 ### Extension Methods
 
 #### ConvertExtension (String Operations)
 
 ##### `ParseString(object, string)`
+
 Converts any object to its string representation with a fallback default value.
+
 ```csharp
 public static string ParseString(this object ob, string defaultValue = "")
 ```
@@ -121,6 +127,7 @@ string fallback = nullValue.ParseString("N/A"); // "N/A"
 ```
 
 ##### `TrimLength(string, int)`
+
 Trims a string to the specified maximum length.
 
 ```csharp
@@ -135,6 +142,7 @@ string short = longText.TrimLength(5); // "Hello"
 ```
 
 ##### `ReverseSubstring(string, int)`
+
 Returns a substring containing the specified number of characters from the end.
 
 ```csharp
@@ -152,6 +160,7 @@ string lastChar = text.ReverseSubstring(); // "g"
 #### ConvertExtension (Boolean Operations)
 
 ##### `ParseBoolean(string)`
+
 Parses various string representations as boolean values (case-insensitive).
 
 ```csharp
@@ -176,6 +185,7 @@ public static bool ParseBoolean(this string s)
 #### EnumExtension
 
 ##### `Description(Enum)`
+
 Retrieves the description from a `DescriptionAttribute` applied to an enum value.
 
 ```csharp
@@ -183,6 +193,7 @@ public static string? Description(this Enum value)
 ```
 
 ##### `GetAttribute<TAttribute>(Enum)`
+
 Retrieves a custom attribute from an enum field.
 
 ```csharp
