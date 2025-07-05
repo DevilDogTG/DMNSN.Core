@@ -25,7 +25,7 @@ if ($uncommittedChanges) {
 }
 
 # Step 2: Restore and build the project
-Write-Host "Setep 2: Restoring and building the project..."
+Write-Host "Step 2: Restoring and building the project..."
 dotnet restore $projectPath
 # If test exists run test before build
 if (Test-Path "${rootPath}\tests\${projectName}.Tests\${projectName}.Tests.csproj") {
@@ -41,9 +41,27 @@ dotnet build $projectPath --configuration Release
 Write-Host "Step 3: Automatically updating package version...${buildType}"
 # Create the package version based on the project file version, if project file version is not set, default to 8.0.0
 $projectFile = [xml](Get-Content $projectPath)
-$versionElement = $projectFile.Project.PropertyGroup.Version
-$currentVersion = if ($versionElement) { $versionElement.InnerText } else { $null }
-if (-not $currentVersion) {
+
+# Find the Version element more robustly
+$versionElement = $projectFile.SelectSingleNode("//Version")
+if (-not $versionElement) {
+	# Try alternative paths
+	$versionElement = $projectFile.Project.PropertyGroup | ForEach-Object { $_.Version } | Where-Object { $_ } | Select-Object -First 1
+}
+
+$currentVersion = if ($versionElement) { 
+	if ($versionElement.InnerText) { 
+		$versionElement.InnerText 
+	} elseif ($versionElement.'#text') { 
+		$versionElement.'#text' 
+	} else { 
+		$null 
+	}
+} else { 
+	$null 
+}
+
+if (-not $currentVersion -or $currentVersion.Trim() -eq "") {
 	Write-Host ".. No version found in project file, setting default version to 8.0.0"
 	$currentVersion = "8.0.0"
 }
@@ -69,16 +87,38 @@ if ($buildType -eq "production") {
 }
 $newVersion = "$majorVersion.$minorVersion.$versionSuffix"
 Write-Host ".. Setting package version to $newVersion"
-# Update the project file with the new version
-$versionElement = $projectFile.Project.PropertyGroup.Version
+
+# Update the project file with the new version - more robust approach
+$versionElement = $projectFile.SelectSingleNode("//Version")
+if (-not $versionElement) {
+	# Try alternative approach to find version element
+	$propertyGroups = $projectFile.Project.PropertyGroup
+	foreach ($pg in $propertyGroups) {
+		if ($pg.Version) {
+			$versionElement = $pg.Version
+			break
+		}
+	}
+}
+
 if ($versionElement) {
+	Write-Host ".. Updating existing version element"
 	$versionElement.InnerText = $newVersion
 } else {
-	# Create the Version element if it doesn't exist
+	Write-Host ".. Creating new version element"
+	# Find the first PropertyGroup or create one
+	$propertyGroup = $projectFile.Project.PropertyGroup | Select-Object -First 1
+	if (-not $propertyGroup) {
+		$propertyGroup = $projectFile.CreateElement("PropertyGroup")
+		$projectFile.Project.AppendChild($propertyGroup)
+	}
+	
+	# Create the Version element
 	$versionNode = $projectFile.CreateElement("Version")
 	$versionNode.InnerText = $newVersion
-	$projectFile.Project.PropertyGroup.AppendChild($versionNode)
+	$propertyGroup.AppendChild($versionNode)
 }
+
 # Save the updated project file
 $projectFile.Save($projectPath)
 
