@@ -8,17 +8,11 @@ param (
 $rootPath = "${PSScriptRoot}\..\"
 $projectName = "DMNSN.Core"
 $projectPath = "${rootPath}\src\${projectName}.csproj"
-$apiKey = $env:NUGET_API_KEY
 ##############################################################
 # Under this line will be replace automatically when updated #
 ##############################################################
 # Stopp script when an error occurs
 $ErrorActionPreference = "Stop"
-# Check if the API key is set
-if (-not $apiKey) {
-	Write-Host "NUGET_API_KEY environment variable is not set. Please set it before running this script."
-	exit 1
-}
 
 # Step 1: Checking all source has commit
 Write-Host "Step 1: Checking if all source files have been committed..."
@@ -110,7 +104,7 @@ Write-Host "Step 7: Publishing the NuGet package..."
 $packagePath = Get-ChildItem "${rootPath}\artifacts" -Filter "*.nupkg" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 if ($packagePath) {
 	Write-Host ".. Found package: $($packagePath.FullName)"
-	dotnet nuget push $packagePath.FullName --api-key $apiKey --source "https://api.nuget.org/v3/index.json"
+	dotnet nuget push $packagePath.FullName --source "https://api.nuget.org/v3/index.json"
 	Write-Host ".. Package published successfully."
 } else {
 	Write-Host ".. No package found to publish."
