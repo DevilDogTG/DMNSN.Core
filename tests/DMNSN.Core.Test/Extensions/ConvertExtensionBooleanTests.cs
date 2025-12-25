@@ -16,7 +16,7 @@ public class ConvertExtensionBooleanTests
         string? nullString = null;
 
         // Act
-        var result = nullString.ParseBoolean();
+        var result = nullString?.ParseBoolean();
 
         // Assert
         Assert.False(result);
@@ -166,12 +166,12 @@ public class ConvertExtensionBooleanTests
         Assert.True("true".ParseBoolean());
         Assert.True("True".ParseBoolean());
         Assert.True("tRuE".ParseBoolean());
-        
+
         Assert.True("YES".ParseBoolean());
         Assert.True("yes".ParseBoolean());
         Assert.True("Yes".ParseBoolean());
         Assert.True("yEs".ParseBoolean());
-        
+
         Assert.True("Y".ParseBoolean());
         Assert.True("y".ParseBoolean());
     }

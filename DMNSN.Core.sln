@@ -1,12 +1,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.2.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMNSN.Core", "src\DMNSN.Core\DMNSN.Core.csproj", "{FD552BC6-D262-9B2D-408A-A5D9E1019256}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Git", "Git", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.gitlab-ci.yml = .gitlab-ci.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{DB4355A8-53BE-4E46-A493-9920148068AF}"
@@ -14,17 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{DB43
 		scripts\publishing-nuget.ps1 = scripts\publishing-nuget.ps1
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configure", "Configure", "{104B0D56-4E40-4430-B868-6AEB23973FCA}"
-	ProjectSection(SolutionItems) = preProject
-		.filenesting.json = .filenesting.json
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMNSN.Core.Test", "tests\DMNSN.Core.Test\DMNSN.Core.Test.csproj", "{C5C9FC2D-4AAD-46ED-B59F-31F14F5E3511}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{0488B7B2-F9EB-4472-8078-754EA018FFF8}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1D9FEAA-1629-4498-A207-5A941A5AB730}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

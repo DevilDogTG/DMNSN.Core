@@ -17,7 +17,7 @@ public class ConvertExtensionStringTests
         const string expectedDefault = "";
 
         // Act
-        var result = nullObject.ParseString();
+        var result = nullObject?.ParseString();
 
         // Assert
         Assert.Equal(expectedDefault, result);
@@ -31,7 +31,7 @@ public class ConvertExtensionStringTests
         const string customDefault = "custom default";
 
         // Act
-        var result = nullObject.ParseString(customDefault);
+        var result = nullObject?.ParseString(customDefault);
 
         // Assert
         Assert.Equal(customDefault, result);
@@ -118,7 +118,7 @@ public class ConvertExtensionStringTests
         string? nullString = null;
 
         // Act
-        var result = nullString.TrimLength(10);
+        var result = nullString?.TrimLength(10);
 
         // Assert
         Assert.Null(result);
@@ -219,7 +219,7 @@ public class ConvertExtensionStringTests
         string? nullString = null;
 
         // Act
-        var result = nullString.ReverseSubstring();
+        var result = nullString?.ReverseSubstring();
 
         // Assert
         Assert.Null(result);
