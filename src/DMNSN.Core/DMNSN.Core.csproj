@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>10.0.1-dev.2</Version>
+    <Version>10.0.1-dev.3</Version>
     <Authors>DevDogs</Authors>
     <Company>OneWeb Co., Ltd.</Company>
     <Description>Shared libraries</Description>
