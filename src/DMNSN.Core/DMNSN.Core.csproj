@@ -3,7 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>10.0.0-dev.1</Version>
+    <Version>10.0.0</Version>
     <Authors>DevDogs</Authors>
     <Company>OneWeb Co., Ltd.</Company>
     <Description>Shared libraries</Description>
