@@ -1,23 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Version>10.0.1-dev.3</Version>
     <Authors>DevDogs</Authors>
-    <Company>OneWeb Co., Ltd.</Company>
+    <Company>Dimension (dmnsn.com)</Company>
     <Description>Shared libraries</Description>
-    <Copyright>Copyright 2025 @ OneWeb Co., Ltd.</Copyright>
-    <PackageProjectUrl>https://www.oneweb.co.th</PackageProjectUrl>
+    <Copyright>Copyright 2025 @ DevDogs</Copyright>
+    <PackageProjectUrl>https://devildogtg.dmnsn.com</PackageProjectUrl>
     <PackageIcon>logo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://gitlab.com/dmnsn/libraries/core</RepositoryUrl>
     <ApplicationIcon>dimension.ico</ApplicationIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="dimension.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\..\logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
