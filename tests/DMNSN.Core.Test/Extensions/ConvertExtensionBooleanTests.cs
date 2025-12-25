@@ -16,7 +16,7 @@ public class ConvertExtensionBooleanTests
         string? nullString = null;
 
         // Act
-        var result = nullString?.ParseBoolean();
+        var result = nullString.ParseBoolean();
 
         // Assert
         Assert.False(result);
