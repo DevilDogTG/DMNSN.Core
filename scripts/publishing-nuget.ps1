@@ -179,7 +179,7 @@ Write-Host "Step 8: Publishing the NuGet package..."
 $packagePath = Get-ChildItem "${rootPath}\artifacts" -Filter "*.nupkg" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 if ($packagePath) {
 	Write-Host ".. Found package: $($packagePath.FullName)"
-	dotnet nuget push $packagePath.FullName --source "https://api.nuget.org/v3/index.json" --api-key $env:NUGET_API_KEY
+	dotnet nuget push $packagePath.FullName --source "https://api.nuget.org/v3/index.json"
 	Write-Host ".. Package published successfully."
 } else {
 	Write-Host ".. No package found to publish."
