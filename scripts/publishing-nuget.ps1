@@ -14,16 +14,8 @@ $projectPath = "${rootPath}\src\${projectName}\${projectName}.csproj"
 # Stopp script when an error occurs
 $ErrorActionPreference = "Stop"
 
-# Step 1: Validate NuGet API Key
-Write-Host "Step 1: Validating NuGet API Key..."
-if ([string]::IsNullOrWhiteSpace($env:NUGET_API_KEY)) {
-	Write-Host ".. Error: NUGET_API_KEY environment variable is not set or empty."
-	exit 1
-}
-Write-Host ".. NUGET_API_KEY is set."
-
-# Step 2: Checking all source has commit
-Write-Host "Step 2: Checking if all source files have been committed..."
+# Step 1: Checking all source has commit
+Write-Host "Step 1: Checking if all source files have been committed..."
 $uncommittedChanges = git status --porcelain
 if ($uncommittedChanges) {
 	Write-Host ".. There are uncommitted changes in the repository. Please commit or stash them before proceeding."
@@ -32,8 +24,8 @@ if ($uncommittedChanges) {
 	Write-Host ".. All source files have been committed."
 }
 
-# Step 3: Restore and build the project
-Write-Host "Step 3: Restoring and building the project..."
+# Step 2: Restore and build the project
+Write-Host "Step 2: Restoring and building the project..."
 dotnet restore $projectPath
 # If test exists run test before build
 if (Test-Path "${rootPath}\tests\${projectName}.Tests\${projectName}.Tests.csproj") {
@@ -45,8 +37,8 @@ if (Test-Path "${rootPath}\tests\${projectName}.Tests\${projectName}.Tests.cspro
 Write-Host ".. Building the project..."
 dotnet build $projectPath --configuration Release
 
-# Step 4: Automatically running package version follow build type, if development running X.X.Y or production running X.Y.0
-Write-Host "Step 4: Automatically updating package version...${buildType}"
+# Step 3: Automatically running package version follow build type, if development running X.X.Y or production running X.Y.0
+Write-Host "Step 3: Automatically updating package version...${buildType}"
 # Create the package version based on the project file version, if project file version is not set, default to 10.0.0
 $projectFile = [xml](Get-Content $projectPath)
 
@@ -148,8 +140,8 @@ if ($versionElement) {
 # Save the updated project file
 $projectFile.Save($projectPath)
 
-# Step 5: Commit update version, if build type is production, also create tag for versioning
-Write-Host "Step 5: Committing the updated version to the repository..."
+# Step 4: Commit update version, if build type is production, also create tag for versioning
+Write-Host "Step 4: Committing the updated version to the repository..."
 git add $projectPath
 if ($buildType -eq "production") {
 	Write-Host ".. Creating a tag for the new version: v$newVersion"
@@ -160,8 +152,8 @@ if ($buildType -eq "production") {
 	git commit -m "Bump version to $newVersion [skip ci]"
 }
 
-# Step 6: Push changes to the repository
-Write-Host "Step 6: Pushing changes to the repository..."
+# Step 5: Push changes to the repository
+Write-Host "Step 5: Pushing changes to the repository..."
 git push origin main
 if ($buildType -eq "production") {
 	Write-Host ".. Pushing the tag to the repository."
@@ -170,12 +162,12 @@ if ($buildType -eq "production") {
 	Write-Host ".. No tag pushed for development build."
 }
 
-# Step 7: Pack the project into a NuGet package
-Write-Host "Step 7: Packing the project into a NuGet package..."
+# Step 6: Pack the project into a NuGet package
+Write-Host "Step 6: Packing the project into a NuGet package..."
 dotnet pack $projectPath --configuration Release --output "${rootPath}\artifacts" --no-build
 
-# Step 8: Publish the NuGet package
-Write-Host "Step 8: Publishing the NuGet package..."
+# Step 7: Publish the NuGet package
+Write-Host "Step 7: Publishing the NuGet package..."
 $packagePath = Get-ChildItem "${rootPath}\artifacts" -Filter "*.nupkg" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 if ($packagePath) {
 	Write-Host ".. Found package: $($packagePath.FullName)"
