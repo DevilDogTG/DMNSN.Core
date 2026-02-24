@@ -9,6 +9,9 @@ public class ConvertExtensionStringTests
 {
     #region ParseString Tests
 
+    /// <summary>
+    /// Tests that ParseString returns the default value for a null object.
+    /// </summary>
     [Fact]
     public void ParseString_WithNullObject_ReturnsDefaultValue()
     {
@@ -23,6 +26,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expectedDefault, result);
     }
 
+    /// <summary>
+    /// Tests that ParseString returns a custom default value for a null object.
+    /// </summary>
     [Fact]
     public void ParseString_WithNullObjectAndCustomDefault_ReturnsCustomDefault()
     {
@@ -37,6 +43,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(customDefault, result);
     }
 
+    /// <summary>
+    /// Tests that ParseString returns the string representation of a valid object.
+    /// </summary>
     [Fact]
     public void ParseString_WithValidObject_ReturnsStringRepresentation()
     {
@@ -51,6 +60,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ParseString returns the original string if the object is already a string.
+    /// </summary>
     [Fact]
     public void ParseString_WithStringObject_ReturnsOriginalString()
     {
@@ -64,6 +76,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(testString, result);
     }
 
+    /// <summary>
+    /// Tests that ParseString returns "True" for a boolean true value.
+    /// </summary>
     [Fact]
     public void ParseString_WithBooleanTrue_ReturnsTrue()
     {
@@ -78,6 +93,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ParseString returns the string representation of a DateTime object.
+    /// </summary>
     [Fact]
     public void ParseString_WithDateTime_ReturnsDateTimeString()
     {
@@ -92,6 +110,11 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ParseString returns the correct string representation for various types.
+    /// </summary>
+    /// <param name="input">The input object.</param>
+    /// <param name="expected">The expected string result.</param>
     [Theory]
     [InlineData(123, "123")]
     [InlineData(123.45, "123.45")]
@@ -111,6 +134,9 @@ public class ConvertExtensionStringTests
 
     #region TrimLength Tests
 
+    /// <summary>
+    /// Tests that TrimLength returns null for a null string.
+    /// </summary>
     [Fact]
     public void TrimLength_WithNullString_ReturnsNull()
     {
@@ -124,6 +150,9 @@ public class ConvertExtensionStringTests
         Assert.Null(result);
     }
 
+    /// <summary>
+    /// Tests that TrimLength returns an empty string for an empty string.
+    /// </summary>
     [Fact]
     public void TrimLength_WithEmptyString_ReturnsEmptyString()
     {
@@ -137,6 +166,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(string.Empty, result);
     }
 
+    /// <summary>
+    /// Tests that TrimLength returns the original string if its length equals the max length.
+    /// </summary>
     [Fact]
     public void TrimLength_WithStringLengthEqualToMaxLength_ReturnsOriginalString()
     {
@@ -151,6 +183,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(testString, result);
     }
 
+    /// <summary>
+    /// Tests that TrimLength returns the original string if its length is less than the max length.
+    /// </summary>
     [Fact]
     public void TrimLength_WithStringLengthLessThanMaxLength_ReturnsOriginalString()
     {
@@ -165,6 +200,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(testString, result);
     }
 
+    /// <summary>
+    /// Tests that TrimLength returns a trimmed string if its length is greater than the max length.
+    /// </summary>
     [Fact]
     public void TrimLength_WithStringLengthGreaterThanMaxLength_ReturnsTrimmedString()
     {
@@ -180,6 +218,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that TrimLength returns an empty string if max length is zero.
+    /// </summary>
     [Fact]
     public void TrimLength_WithZeroMaxLength_ReturnsEmptyString()
     {
@@ -194,6 +235,12 @@ public class ConvertExtensionStringTests
         Assert.Equal(string.Empty, result);
     }
 
+    /// <summary>
+    /// Tests that TrimLength returns expected results for various inputs.
+    /// </summary>
+    /// <param name="input">The input string.</param>
+    /// <param name="maxLength">The maximum length.</param>
+    /// <param name="expected">The expected result.</param>
     [Theory]
     [InlineData("Hello World", 3, "Hel")]
     [InlineData("Test", 2, "Te")]
@@ -212,6 +259,9 @@ public class ConvertExtensionStringTests
 
     #region ReverseSubstring Tests
 
+    /// <summary>
+    /// Tests that ReverseSubstring returns null for a null string.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithNullString_ReturnsNull()
     {
@@ -225,6 +275,9 @@ public class ConvertExtensionStringTests
         Assert.Null(result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring returns an empty string for an empty string.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithEmptyString_ReturnsEmptyString()
     {
@@ -238,6 +291,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(string.Empty, result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring returns the last character by default.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithDefaultCount_ReturnsLastCharacter()
     {
@@ -252,6 +308,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring returns the original string if count equals length.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithCountEqualToStringLength_ReturnsOriginalString()
     {
@@ -266,6 +325,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(testString, result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring returns the original string if count is greater than length.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithCountGreaterThanStringLength_ReturnsOriginalString()
     {
@@ -280,6 +342,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(testString, result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring returns the last N characters.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithValidCount_ReturnsLastNCharacters()
     {
@@ -295,6 +360,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring works correctly for single character strings.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithSingleCharacterString_ReturnsSameCharacter()
     {
@@ -309,6 +377,12 @@ public class ConvertExtensionStringTests
         Assert.Equal(testString, result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring returns expected results for various inputs.
+    /// </summary>
+    /// <param name="input">The input string.</param>
+    /// <param name="count">The character count.</param>
+    /// <param name="expected">The expected result.</param>
     [Theory]
     [InlineData("Hello World", 1, "d")]
     [InlineData("Hello World", 3, "rld")]
@@ -324,6 +398,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring returns an empty string if count is zero.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithZeroCount_ReturnsEmptyString()
     {
@@ -342,6 +419,9 @@ public class ConvertExtensionStringTests
 
     #region Edge Cases and Integration Tests
 
+    /// <summary>
+    /// Tests that ParseString returns default value if ToString returns null.
+    /// </summary>
     [Fact]
     public void ParseString_WithObjectThatReturnsNullToString_ReturnsDefaultValue()
     {
@@ -356,6 +436,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(customDefault, result);
     }
 
+    /// <summary>
+    /// Tests that TrimLength handles unicode characters correctly.
+    /// </summary>
     [Fact]
     public void TrimLength_WithUnicodeCharacters_HandlesCorrectly()
     {
@@ -371,6 +454,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ReverseSubstring handles unicode characters correctly.
+    /// </summary>
     [Fact]
     public void ReverseSubstring_WithUnicodeCharacters_HandlesCorrectly()
     {
@@ -386,6 +472,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ParseString and TrimLength work correctly when combined.
+    /// </summary>
     [Fact]
     public void CombinedOperations_ParseStringThenTrimLength_WorksCorrectly()
     {
@@ -401,6 +490,9 @@ public class ConvertExtensionStringTests
         Assert.Equal(expected, result);
     }
 
+    /// <summary>
+    /// Tests that ParseString and ReverseSubstring work correctly when combined.
+    /// </summary>
     [Fact]
     public void CombinedOperations_ParseStringThenReverseSubstring_WorksCorrectly()
     {

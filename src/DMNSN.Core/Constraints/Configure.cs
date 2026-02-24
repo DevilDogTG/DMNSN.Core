@@ -8,7 +8,14 @@
 /// provider.</remarks>
 public static partial class ConfigureKey
 {
+    /// <summary>
+    /// The configuration section key for application settings ("AppSettings").
+    /// </summary>
     public const string Application = "AppSettings";
+
+    /// <summary>
+    /// The configuration section key for logging settings ("LoggingSettings").
+    /// </summary>
     public const string Logging = "LoggingSettings";
 }
 
@@ -19,6 +26,13 @@ public static partial class ConfigureKey
 /// They can be used to standardize file references across the application.</remarks>
 public static partial class ConfigureFile
 {
+    /// <summary>
+    /// The default file name for application settings ("appsettings.json").
+    /// </summary>
     public const string Application = "appsettings.json";
+
+    /// <summary>
+    /// The default file name for logging settings ("logsettings.json").
+    /// </summary>
     public const string Logging = "logsettings.json";
 }

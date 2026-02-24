@@ -4,6 +4,9 @@ using DMNSN.Core.Extensions;
 
 namespace DMNSN.Core.Test.Extensions;
 
+/// <summary>
+/// Unit tests for EnumExtension methods.
+/// </summary>
 public class EnumExtensionTests
 {
     private enum TestEnum
@@ -13,6 +16,9 @@ public class EnumExtensionTests
         WithoutDescription
     }
 
+    /// <summary>
+    /// Tests that Description extension returns the description from the attribute.
+    /// </summary>
     [Fact]
     public void Description_WithDescriptionAttribute_ReturnsDescription()
     {
@@ -26,6 +32,9 @@ public class EnumExtensionTests
         Assert.Equal("Test Description", result);
     }
 
+    /// <summary>
+    /// Tests that Description extension returns null when attribute is missing.
+    /// </summary>
     [Fact]
     public void Description_WithoutDescriptionAttribute_ReturnsNull()
     {
@@ -39,6 +48,9 @@ public class EnumExtensionTests
         Assert.Null(result);
     }
 
+    /// <summary>
+    /// Tests that Description extension interacts correctly with FormatDate enum.
+    /// </summary>
     [Fact]
     public void Description_WithFormatDateEnum_ReturnsCorrectDescription()
     {
@@ -52,6 +64,9 @@ public class EnumExtensionTests
         Assert.Equal("ddMMyyyy", result);
     }
 
+    /// <summary>
+    /// Tests that GetAttribute extension returns the attribute.
+    /// </summary>
     [Fact]
     public void GetAttribute_WithAttribute_ReturnsAttribute()
     {
@@ -66,6 +81,9 @@ public class EnumExtensionTests
         Assert.Equal("Test Description", result?.Description);
     }
 
+    /// <summary>
+    /// Tests that GetAttribute extension returns null when attribute is missing.
+    /// </summary>
     [Fact]
     public void GetAttribute_WithoutAttribute_ReturnsNull()
     {
@@ -79,6 +97,9 @@ public class EnumExtensionTests
         Assert.Null(result);
     }
 
+    /// <summary>
+    /// Tests that ToInt extension returns integer value of enum.
+    /// </summary>
     [Fact]
     public void ToInt_WithValidEnum_ReturnsIntegerValue()
     {
@@ -92,6 +113,9 @@ public class EnumExtensionTests
         Assert.Equal(0, result);
     }
 
+    /// <summary>
+    /// Tests that ToInt extension throws exception for non-enum types.
+    /// </summary>
     [Fact]
     public void ToInt_WithNonEnumType_ThrowsArgumentException()
     {

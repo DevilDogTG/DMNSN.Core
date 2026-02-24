@@ -2,10 +2,16 @@ using DMNSN.Core.Extensions;
 
 namespace DMNSN.Core.Test.Extensions;
 
+/// <summary>
+/// Unit tests for ExceptionExtension methods.
+/// </summary>
 public class ExceptionExtensionTests
 {
     private const string Separator = " | ";
 
+    /// <summary>
+    /// Tests that GetMessage returns the message for a single exception.
+    /// </summary>
     [Fact]
     public void GetMessage_WithSingleException_ReturnsMessage()
     {
@@ -19,6 +25,9 @@ public class ExceptionExtensionTests
         Assert.Equal("Test Exception", result);
     }
 
+    /// <summary>
+    /// Tests that GetMessage returns concatenated messages for inner exceptions with default separator.
+    /// </summary>
     [Fact]
     public void GetMessage_WithInnerExceptionAndDefaultSeparator_ReturnsConcatenatedMessages()
     {
@@ -35,6 +44,9 @@ public class ExceptionExtensionTests
         Assert.Contains(" ===>>> Inner Exception ===>>> ", result);
     }
 
+    /// <summary>
+    /// Tests that GetMessage returns concatenated messages with custom separator.
+    /// </summary>
     [Fact]
     public void GetMessage_WithInnerExceptionAndCustomSeparator_ReturnsConcatenatedMessagesWithSeparator()
     {
@@ -49,6 +61,9 @@ public class ExceptionExtensionTests
         Assert.Equal("Outer | Inner", result);
     }
 
+    /// <summary>
+    /// Tests that GetMessage returns only the outer message when getInner is false.
+    /// </summary>
     [Fact]
     public void GetMessage_WithInnerExceptionAndGetInnerFalse_ReturnsOnlyOuterMessage()
     {
@@ -63,6 +78,9 @@ public class ExceptionExtensionTests
         Assert.Equal("Outer", result);
     }
 
+    /// <summary>
+    /// Tests that GetMessageUrlEncoded returns URL-encoded string.
+    /// </summary>
     [Fact]
     public void GetMessageUrlEncoded_ReturnsUrlEncodedString()
     {
@@ -76,6 +94,9 @@ public class ExceptionExtensionTests
         Assert.Equal("Test+Exception", result);
     }
 
+    /// <summary>
+    /// Tests that GetStackTrace returns stack trace for a single exception.
+    /// </summary>
     [Fact]
     public void GetStackTrace_WithSingleException_ReturnsStackTrace()
     {
@@ -98,6 +119,9 @@ public class ExceptionExtensionTests
         Assert.NotEmpty(result);
     }
 
+    /// <summary>
+    /// Tests that GetStackTrace returns combined stack trace for inner exceptions.
+    /// </summary>
     [Fact]
     public void GetStackTrace_WithInnerException_ReturnsCombinedStackTrace()
     {

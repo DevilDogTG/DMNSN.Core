@@ -10,12 +10,16 @@ namespace DMNSN.Core.Constraints;
 /// cref="DescriptionAttribute"/>.</remarks>
 public enum FormatDate
 {
+    /// <summary>Format: "ddMMyyyy"</summary>
     [Description("ddMMyyyy")]
     _ddMMyyyy,
+    /// <summary>Format: "yyyyMMdd"</summary>
     [Description("yyyyMMdd")]
     _yyyyMMdd,
+    /// <summary>Format: "dd/MM/yyyy"</summary>
     [Description("dd/MM/yyyy")]
     ddMMyyyy,
+    /// <summary>Format: "yyyy-MM-dd"</summary>
     [Description("yyyy-MM-dd")]
     yyyyMMdd
 }
@@ -27,16 +31,22 @@ public enum FormatDate
 /// Each format corresponds to a specific string representation of time, such as "HH:mm:ss" or "hh:mm tt".</remarks>
 public enum FormatTime
 {
+    /// <summary>Format: "HHmmss"</summary>
     [Description("HHmmss")]
     _HHmmss,
+    /// <summary>Format: "HHmmssfff"</summary>
     [Description("HHmmssfff")]
     _HHmmssfff,
+    /// <summary>Format: "HH:mm:ss"</summary>
     [Description("HH:mm:ss")]
     HHmmss,
+    /// <summary>Format: "HH:mm"</summary>
     [Description("HH:mm")]
     HHmm,
+    /// <summary>Format: "hh:mm tt"</summary>
     [Description("hh:mm tt")]
     hhmmtt,
+    /// <summary>Format: "HH:mm:ss.fff"</summary>
     [Description("HH:mm:ss.fff")]
     HHmmssfff
 }
@@ -49,22 +59,31 @@ public enum FormatTime
 /// applications. The format patterns  follow standard .NET date and time formatting conventions.</remarks>
 public enum FormatDateTime
 {
+    /// <summary>Format: "yyyyMMddHHmmssfff"</summary>
     [Description("yyyyMMddHHmmssfff")]
     _yyyyMMddHHmmssfff,
+    /// <summary>Format: "yyyyMMddHHmmss"</summary>
     [Description("yyyyMMddHHmmss")]
     _yyyyMMddHHmmss,
+    /// <summary>Format: "ddMMyyyyHHmmss"</summary>
     [Description("ddMMyyyyHHmmss")]
     _ddMMyyyyHHmmss,
+    /// <summary>Format: "dd/MM/yyyy HH:mm:ss"</summary>
     [Description("dd/MM/yyyy HH:mm:ss")]
     ddMMyyyyHHmmss,
+    /// <summary>Format: "yyyy-MM-dd HH:mm:ss"</summary>
     [Description("yyyy-MM-dd HH:mm:ss")]
     yyyyMMddHHmmss,
+    /// <summary>Format: "dd/MM/yyyy HH:mm"</summary>
     [Description("dd/MM/yyyy HH:mm")]
     ddMMyyyyHHmm,
+    /// <summary>Format: "yyyy-MM-dd HH:mm"</summary>
     [Description("yyyy-MM-dd HH:mm")]
     yyyyMMddHHmm,
+    /// <summary>Format: "dd/MM/yyyy hh:mm tt"</summary>
     [Description("dd/MM/yyyy hh:mm tt")]
     ddMMyyyyhhmmtt,
+    /// <summary>Format: "yyyy-MM-dd hh:mm tt"</summary>
     [Description("yyyy-MM-dd hh:mm tt")]
     yyyyMMddhhmmtt
 }

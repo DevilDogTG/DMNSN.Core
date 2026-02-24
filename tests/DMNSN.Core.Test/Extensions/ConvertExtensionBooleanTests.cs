@@ -9,6 +9,9 @@ public class ConvertExtensionBooleanTests
 {
     #region ParseBoolean Tests
 
+    /// <summary>
+    /// Tests that ParseBoolean returns false for a null string.
+    /// </summary>
     [Fact]
     public void ParseBoolean_WithNullString_ReturnsFalse()
     {
@@ -22,6 +25,9 @@ public class ConvertExtensionBooleanTests
         Assert.False(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns false for an empty string.
+    /// </summary>
     [Fact]
     public void ParseBoolean_WithEmptyString_ReturnsFalse()
     {
@@ -35,6 +41,9 @@ public class ConvertExtensionBooleanTests
         Assert.False(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns false for a string containing only whitespace.
+    /// </summary>
     [Fact]
     public void ParseBoolean_WithWhitespaceOnly_ReturnsFalse()
     {
@@ -48,6 +57,10 @@ public class ConvertExtensionBooleanTests
         Assert.False(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns true for variations of "true".
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("true")]
     [InlineData("TRUE")]
@@ -62,6 +75,10 @@ public class ConvertExtensionBooleanTests
         Assert.True(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns true for variations of "yes".
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("yes")]
     [InlineData("YES")]
@@ -76,6 +93,10 @@ public class ConvertExtensionBooleanTests
         Assert.True(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns true for variations of "y".
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("y")]
     [InlineData("Y")]
@@ -88,6 +109,10 @@ public class ConvertExtensionBooleanTests
         Assert.True(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns true for "1".
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("1")]
     public void ParseBoolean_WithOne_ReturnsTrue(string input)
@@ -99,6 +124,10 @@ public class ConvertExtensionBooleanTests
         Assert.True(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns false for various false-like values.
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("false")]
     [InlineData("no")]
@@ -117,6 +146,10 @@ public class ConvertExtensionBooleanTests
         Assert.False(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns true for true-like values containing whitespace.
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("  true  ")]
     [InlineData("  yes  ")]
@@ -131,6 +164,10 @@ public class ConvertExtensionBooleanTests
         Assert.True(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns false for false-like values containing whitespace.
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("  false  ")]
     [InlineData("  no  ")]
@@ -145,6 +182,10 @@ public class ConvertExtensionBooleanTests
         Assert.False(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns true for true-like values containing various whitespace characters.
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("\ttrue\t")]
     [InlineData("\nyes\n")]
@@ -158,6 +199,9 @@ public class ConvertExtensionBooleanTests
         Assert.True(result);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean functionality is case-insensitive.
+    /// </summary>
     [Fact]
     public void ParseBoolean_CaseInsensitiveComparison_WorksCorrectly()
     {
@@ -176,6 +220,10 @@ public class ConvertExtensionBooleanTests
         Assert.True("y".ParseBoolean());
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean returns false for various empty or whitespace inputs.
+    /// </summary>
+    /// <param name="input">The input string.</param>
     [Theory]
     [InlineData("")]
     [InlineData(" ")]
@@ -196,6 +244,9 @@ public class ConvertExtensionBooleanTests
 
     #region Integration Tests with String Methods
 
+    /// <summary>
+    /// Tests that ParseBoolean works correctly when chained with ParseString.
+    /// </summary>
     [Fact]
     public void ParseBoolean_AfterParseString_WorksCorrectly()
     {
@@ -210,6 +261,9 @@ public class ConvertExtensionBooleanTests
         Assert.True(boolResult);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean works correctly when chained with TrimLength.
+    /// </summary>
     [Fact]
     public void ParseBoolean_AfterTrimLength_WorksCorrectly()
     {
@@ -225,6 +279,9 @@ public class ConvertExtensionBooleanTests
         Assert.True(boolResult);
     }
 
+    /// <summary>
+    /// Tests that ParseBoolean works correctly when chained with ReverseSubstring.
+    /// </summary>
     [Fact]
     public void ParseBoolean_AfterReverseSubstring_WorksCorrectly()
     {

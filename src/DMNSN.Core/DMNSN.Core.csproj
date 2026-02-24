@@ -14,6 +14,7 @@
     <RepositoryUrl>https://gitlab.com/dmnsn/libraries/core</RepositoryUrl>
     <ApplicationIcon>dimension.ico</ApplicationIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="dimension.ico" />
